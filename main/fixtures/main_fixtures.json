@@ -1,0 +1,62 @@
+[
+    {
+        "model": "main.Client",
+        "pk": 1,
+        "fields": {
+            "phone": "+79221110500",
+            "mobile_code": "922",
+            "tag": "CH",
+            "time_zone": "Europe/Moscow"
+    }
+    },
+    {
+        "model": "main.Client",
+        "pk": 2,
+        "fields": {
+            "phone": "+79221110511",
+            "mobile_code": "922",
+            "tag": "SC",
+            "time_zone": "Europe/Moscow"
+        }
+    },
+    {
+        "model": "main.Client",
+        "pk": 3,
+        "fields": {
+            "phone": "+79221110523",
+            "mobile_code": "922",
+            "tag": "ST",
+            "time_zone": "Europe/Moscow"
+        }
+    },
+    {
+        "model": "main.Client",
+        "pk": 4,
+        "fields": {
+            "phone": "+79221110556",
+            "mobile_code": "922",
+            "tag": "WR",
+            "time_zone": "Europe/Moscow"
+        }
+    },
+    {
+        "model": "main.Client",
+        "pk": 5,
+        "fields": {
+            "phone": "+79221110514",
+            "mobile_code": "922",
+            "tag": "RT",
+            "time_zone": "Europe/Moscow"
+        }
+    },
+    {
+        "model": "main.Client",
+        "pk": 6,
+        "fields": {
+            "phone": "+79221110581",
+            "mobile_code": "922",
+            "tag": "WR",
+            "time_zone": "Europe/Moscow"
+        }
+    }
+]
