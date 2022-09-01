@@ -4,11 +4,11 @@ import datetime
 from main.services import wrong_time_status, error_status, success_status, waiting_status
 from notification_service.celery import app
 from main.models import Notification, Client
-from config import CONFIG
+from notification_service.settings import URL, TOKEN
 
 
 @app.task(bind=True, retry_backoff=5)
-def send_notification(self, notification_id: int, client_id: int, data, url=CONFIG.URL, token=CONFIG.TOKEN):
+def send_notification(self, notification_id: int, client_id: int, data, url=URL, token=TOKEN):
     notification = Notification.objects.get(pk=notification_id)
     client = Client.objects.get(pk=client_id)
     timezone_client = pytz.timezone(client.time_zone)

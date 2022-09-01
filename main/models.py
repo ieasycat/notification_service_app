@@ -1,7 +1,7 @@
 from django.urls import reverse
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from config import CONFIG
+from notification_service.settings import TIME_ZONES
 
 
 class Tag(models.TextChoices):
@@ -35,7 +35,7 @@ class Client(models.Model):
     tag = models.CharField(
         choices=Tag.choices, max_length=2)
     time_zone = models.CharField(
-        choices=CONFIG.TIME_ZONES, max_length=32)
+        choices=TIME_ZONES, max_length=32)
 
     def __str__(self):
         return f'{self.phone}'

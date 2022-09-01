@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Notification, Client, Message
+from main.models import Notification, Client, Message
 
 
 admin.site.register(Notification)

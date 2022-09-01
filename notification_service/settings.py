@@ -1,6 +1,9 @@
 from pathlib import Path
 import os
-from config import CONFIG
+import pytz
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,10 +13,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = CONFIG.SECRET_KEY
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = CONFIG.DEBUG
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -80,11 +83,11 @@ WSGI_APPLICATION = 'notification_service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': CONFIG.POSTGRES_NAME,
-        'USER': CONFIG.POSTGRES_USER,
-        'PASSWORD': CONFIG.POSTGRES_PASSWORD,
-        'HOST': CONFIG.POSTGRES_HOST,
-        'PORT': CONFIG.POSTGRES_PORT,
+        'NAME': os.environ.get('NAME'),
+        'USER': os.environ.get('USER'),
+        'PASSWORD': os.environ.get('PASSWORD'),
+        'HOST': os.environ.get('HOST'),
+        'PORT': os.environ.get('PORT'),
     }
 }
 
@@ -157,7 +160,12 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CELERY_BROKER_URL = CONFIG.CELERY_URL
+CELERY_BROKER_URL = os.environ.get('CELERY_URL')
 CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
-CELERY_RESULT_BACKEND = CONFIG.CELERY_URL
+CELERY_RESULT_BACKEND = os.environ.get('CELERY_URL')
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+TIME_ZONES = tuple(zip(pytz.all_timezones, pytz.all_timezones))
+
+URL = os.environ.get('URL')
+TOKEN = os.environ.get('TOKEN')
