@@ -19,7 +19,7 @@ class Notification(models.Model):
     end_date = models.DateTimeField()
 
     def get_absolute_url(self):
-        return reverse('detail notification', kwargs={'pk': self.pk})
+        return reverse('detail_notification', kwargs={'pk': self.pk})
 
     def __str__(self):
         return f'{self.start_date}'

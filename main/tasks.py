@@ -4,11 +4,11 @@ import datetime
 from main.services import wrong_time_status, error_status, success_status, waiting_status
 from notification_service.celery import app
 from main.models import Notification, Client
-from notification_service.settings import URL, TOKEN
+from notification_service.settings import URL, HEADER
 
 
 @app.task(bind=True, retry_backoff=5)
-def send_notification(self, notification_id: int, client_id: int, data, url=URL, token=TOKEN):
+def send_notification(self, notification_id: int, client_id: int, data, url=URL):
     notification = Notification.objects.get(pk=notification_id)
     client = Client.objects.get(pk=client_id)
     timezone_client = pytz.timezone(client.time_zone)
@@ -26,12 +26,9 @@ def send_notification(self, notification_id: int, client_id: int, data, url=URL,
             )
 
         else:
-            header = {
-                'Authorization': f'Bearer {token}',
-                'Content-Type': 'application/json'}
             try:
                 requests.post(
-                    url=url + str(data['id']), headers=header, json=data)
+                    url=url + str(data['id']), headers=HEADER, json=data)
             except requests.exceptions.RequestException as exc:
                 error_status(
                     message_id=data['id'],
