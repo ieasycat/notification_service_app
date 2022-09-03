@@ -56,10 +56,20 @@ http://127.0.0.1:5555 Flower
 http://127.0.0.1:8000/docs/
 ```
 
+## Running tests:
+  - pytest
+  - View % code coverage
+
+````
+   pytest --cov=.
+````
+
+
 ### Additional tasks:
 
-   - Prepare docker-compose to run all project services with one command (item №3)
-   - Documentation (item №5)
-   - Admin Web UI - 'http://127.0.0.1:8000/admin/' (item №6)
-   - Processing remote server errors and creating the status of an 'Error' message, followed by the creation of a periodic task (item №9)
-   - An additional possibility of sending notifications to clients depending on the client's time zone has been implemented. If the time does not match the    required range, the task gets the status 'Wrong Time' and will be restarted after 1 hour (item №11)
+  - Testing the code, 87% (item №1)
+  - Prepare docker-compose to run all project services with one command (item №3)
+  - Documentation (item №5)
+  - Admin Web UI - 'http://127.0.0.1:8000/admin/' (item №6)
+  - Processing remote server errors and creating the status of an 'Error' message, followed by the creation of a periodic task (item №9)
+  - An additional possibility of sending notifications to clients depending on the client's time zone has been implemented. If the time does not match the    required range, the task gets the status 'Wrong Time' and will be restarted after 1 hour (item №11)
