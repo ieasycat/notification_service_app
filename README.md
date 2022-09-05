@@ -64,6 +64,44 @@ http://127.0.0.1:8000/docs/
    pytest --cov=.
 ````
 
+## Technical task:
+To design and develop a service that, according to the specified rules, launches a mailing list of clients.
+   
+The "mailing list" entity has the attributes:
+   
+   - Unique mailing id
+   - Date and time of the newsletter launch
+   - Text of the message to be delivered to the client
+   - Filter the properties of the clients on which the mailing should be made (mobile operator code, tag)
+   - Date and time of the end of the mailing list: if for some reason they did not have time to send out all the messages, no messages should be delivered to               customers after this time
+   
+The "client" entity has the following attributes:
+
+   - Unique client id
+   - Client phone number in 7XXXXXXXXXX format (X is a digit from 0 to 9)
+   - Mobile operator code
+   - Tag (arbitrary label)
+   - Time zone
+
+The "message" entity has the following attributes:
+
+   - Unique message id
+   - Date and time of creation (sending)
+   - Sending status
+   - Id of the mailing list within which the message was sent
+   - Id of the client to whom the message was sent
+   
+Design and implement an API for:
+
+   - Adding a new client to the directory with all it's attributes
+   - Updating client attribute data
+   - Removing a client from the directory
+   - Adding a new mailing with all it's attributes
+   - Getting general statistics on created mailings and the number of messages sent on them with grouping by statuses
+   - Getting detailed statistics of messages sent on a specific mailing list 
+   - Updating mailing list attributes
+   - Deleting mailing lists
+   - Processing active mailings and sending messages to clients
 
 ### Additional tasks:
 
